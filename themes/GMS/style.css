@@ -1,0 +1,1407 @@
+/*   
+Theme Name: GMS Theme
+Description: Style-free theme to pull style sheets from clients
+Author: ContentLEAD
+Author URI: http://contentlead.com
+Version: 1.0
+*/
+
+/*
+	HTML5 Reset Wordpress Theme :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://ericmeyer.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+	Special thanks: The Wordpress theme owes its start to an empty theme authored 
+		by Chris Coyier & Jeff Starr: http://digwp.com
+	
+-------------------------------------------------------------------------------*/
+
+/* News section default
+-------------------------------------------------------------------------------*/
+
+@font-face {
+    font-family: "glyph";
+    src: url("font/glyphicons-regular.woff") format('woff');
+}
+
+
+object,#news iframe,#news h1,#news h2,#news h3,#news h4,#news h5,#news h6,#news p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}									
+
+#news article, #news aside, #news figure, #news footer, #news header, #news hgroup, #news nav, #news section {display: block;}
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites, like, say for Google Maps custom placemarkers. 
+   There has been a report of problems with standard Google maps as well, but we haven't been able to duplicate or diagnose the issue. */
+#news img,
+#news object,
+#news embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+#news ul {list-style: none;}
+
+#news blockquote, #news q {quotes: none;}
+
+#news blockquote:before, 
+#news blockquote:after, 
+#news q:before, 
+#news q:after {content: ''; content: none;}
+
+#news a {margin: 0; padding: 0; vertical-align: baseline;}
+
+.sidebar a {
+	font-size: 14px;
+}
+
+#news del {text-decoration: line-through;}
+
+#news abbr[title], #news dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+#news table {border-collapse: collapse; border-spacing: 0;}
+#news th {font-weight: bold; vertical-align: bottom;}
+#news td {font-weight: normal; vertical-align: top;}
+
+#news hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+#news input, #news select {vertical-align: middle;}
+
+#news pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+#news input[type="radio"] {vertical-align: text-bottom;}
+#news input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+.ie6 #news input {vertical-align: text-bottom;}
+
+#news select, #news input, #news textarea {font-family: Arial;}
+
+#news table {font-size: inherit; font: 100%;}
+ 
+/* Accessible focus treatment
+	people.opera.com/patrickl/experiments/keyboard/test */
+#news a:hover, #news a:active {outline: none;}
+
+#news small {font-size: 85%;}
+
+#news strong, #news th {font-weight: bold;}
+
+#news td, #news td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't screw with your line-heights
+	gist.github.com/413930 */
+#news sub, #news sup {font-size: 75%; line-height: 0; position: relative;}
+#news sup {top: -0.5em;}
+#news sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+#news pre, #news code, #news kbd, #news samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+#news .clickable,
+#news label, 
+#news input[type=button], 
+#news input[type=submit], 
+#news button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+#news button, #news input, #news select, #news textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+#news button {width: auto; overflow: visible;}
+ 
+/* scale images in IE7 more attractively */
+.ie7 #news img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover */
+.ie6 #news html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* let's clear some floats */
+#news .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+#news .clearfix:after { clear: both; }  
+#news .clearfix { zoom: 1; }
+
+/* Font Awesome 
+-------------------------------------------------------------- */
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url('font/fontawesome-webfont.eot');
+  src: url('font/fontawesome-webfont.eot?#iefix') format('eot'), url('font/fontawesome-webfont.woff') format('woff'), url('font/fontawesome-webfont.ttf') format('truetype'), url('font/fontawesome-webfont.svg#FontAwesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+  vertical-align: top;
+  font-size: 1.3333333333333333em;
+}
+.btn [class^="icon-"], .btn [class*=" icon-"] {
+  /* keeps button heights with and without icons the same */
+
+  line-height: .9em;
+}
+li [class^="icon-"], li [class*=" icon-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+li .icon-large[class^="icon-"], li .icon-large[class*=" icon-"] {
+  /* 1.5 increased font size for icon-large * 1.25 width */
+  width: 1.875em;
+}
+li[class^="icon-"], li[class*=" icon-"] {
+  margin-left: 0;
+  list-style-type: none;
+}
+li[class^="icon-"]:before, li[class*=" icon-"]:before {
+  text-indent: -2em;
+  text-align: center;
+}
+li[class^="icon-"].icon-large:before, li[class*=" icon-"].icon-large:before {
+  text-indent: -1.3333333333333333em;
+}
+
+.icon-phone:before { content: "\f095"; }
+
+/* And here begins the Wordpress fun.
+-------------------------------------------------------------------------------*/
+
+#news {
+/*	width: 1000px; */
+/*	margin: 30px auto; */
+	font: 16px sans-serif;
+	overflow: auto;
+}
+
+#news p {
+/*	margin-bottom: 1.625em; */
+/*	line-height: 140%; */
+  line-height: 18px;
+  padding-bottom: 16px;	
+  margin-bottom: 8px;
+  font-size: 11pt;
+
+}
+
+#news .entry-summary p {
+	font-size: 11pt;
+}
+
+
+
+
+#news, #news select, #news input, #news textarea {color: rgb(102, 102, 102);}
+
+#news a {
+	color: #03f;
+	text-decoration: none;
+}
+
+#news a:hover {
+/*	color: #69f; */
+}
+
+#news h1 {
+	font-size: 1.75em;
+}
+
+#news h2 {
+	font-size: 1.25em ;
+}
+
+#news h3 {
+	font-size: 1.125em;
+}
+
+#news img {
+	-webkit-border-radius: 3px ;
+	-moz-border-radius: 3px ;
+	border-radius: 3px;
+}
+
+#news .figure {
+/*	float: right; */
+/*	max-width: 50%; */
+/*	padding: 0 15px; */
+	margin: 0;
+	background-color: transparent;
+/*	background-color: rgba(222, 222, 222, .2); */
+/*	border: 1px solid #dedede; */
+	-webkit-border-radius: 3px ;
+	-moz-border-radius: 3px ;
+	border-radius: 3px;
+	text-align: center;
+	width: 100%;
+}
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+#news ::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+#news ::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/* j.mp/webkit-tap-highlight-color */
+#news a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+#news ins {background-color: #fcd700; color: #000; text-decoration: none;}
+#news mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+
+/* Finally, let's start on the major components of our theme
+-------------------------------------------------------------------------------*/
+
+#news .author {
+	display: none;
+}
+
+#news time {
+/*	font-size: 0.8em; */
+
+}
+
+#primary,
+.single #news article,
+.page #news article {
+	width: 72%;
+	float: left;
+	margin-right: 30px;
+	margin-bottom: 15px;
+}
+
+#news .news-categories {
+	overflow: auto;
+}
+
+#news .news-category {
+	width: 47.5%;
+	float: left;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+	#news .news-category:nth-child(odd) {
+		clear: left;
+	}
+
+	#news .news-category:nth-child(even) {
+		float: right;
+		clear:right;
+	}
+
+#news .news-category:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#latest-news,
+.news-category {
+	display: block;
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+}
+
+	#news .news-category .category-title {
+		margin-bottom: 15px;
+		font-size: 1.5em;
+	}
+
+	#news .news-category .entry-title {
+		font-size: 1.25em;
+		clear: both;
+	}
+
+#sidebar {
+	width: 32%;
+	float: right;
+}
+
+#news .hentry:last-child,
+#news #pnf404 article {
+	border-bottom: 0;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+#news .page-title,
+#latest-news,
+.news-category,
+.widget,
+.single .entry-header,
+.single .entry-content,
+.page .entry-header,
+.page .entry-content,
+.category article,
+.archive article,
+.page-title,
+#news #social #respond,
+#social-tabs-comments,
+.navigation {
+	/* border: 1px solid #dedede; */
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 15px;
+}
+
+#latest-news img,
+#primary img {
+	max-width: 100%;
+	height: auto;
+	float: left;
+	clear: left;
+	margin-right: 15px;
+}
+
+#latest-news article,
+.archive article,
+.category article,
+.news-category article {
+	display: block;
+	overflow:auto;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgb(200,200,200);
+}
+
+	#latest-news article .entry-header,
+	.news-category article .entry-header,
+	.archive article .entry-header  {
+	/*	margin-bottom: 10px; */
+	}
+
+		.news-category article .entry-header img{
+		margin-bottom: 15px;
+	}
+
+	#news .news-category article p {
+		margin-bottom: 0;
+	}
+
+#latest-news p,
+.news-category p,
+.archive p {
+	margin-bottom: 0;
+}
+
+#news .page-title,
+.social-media,
+.widget,
+#news #contact-button,
+.page-title,
+.page .entry-header {
+	margin-bottom: 30px;
+}
+
+.single .entry-header {
+margin-bottom: -10px;
+}
+
+	.figure:empty {
+		display: none;
+	}
+
+	.figure .caption { /* Styling macthes Facebook Comments Box */
+		padding: 0 15px;
+		margin-bottom: 0 !important;
+		color: gray;
+		font-size: 11px !important;
+		font-family: Arial;
+		font-style: italic;
+		line-height: 1.28;
+	}
+
+.archive article,
+.catgory article,
+.navigation {
+	clear: both;
+}
+
+#news .navigation {
+	text-align: center;
+}
+	.navigation:empty {
+		display: none;
+	}
+
+#news .widget {
+	clear: both;
+}
+
+#news .widget-title {
+	margin-bottom: 15px;
+}
+
+	#news .widget ul {
+	/*	list-style: circle;
+		padding-left: 1.5em; */
+	}
+
+	#news .widget p {
+		margin-bottom: 0;
+	}
+
+#news .widget_categories .cat-item-1 {
+	display: none;
+}
+
+.error404 #news .widget {
+	width: 28%;
+	margin-right: 15px;
+	float: left;
+	clear: none;
+}
+
+#footer {
+	clear: both;
+}
+
+/* Social Media Sharing Posts
+-------------------------------------------------------------------------------*/
+.social-sharing {
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Comment Plugin (http://mailchimp.com/social-plugin-for-wordpress/)
+-------------------------------------------------------------------------------*/
+#social {
+	margin: 30px 0 !important;
+}
+
+#social #reply-title,
+#social .social-help,
+#social .social-last-reply-when,
+.social-posted-from {
+	display:none !important;
+}
+
+#social .social-input-row label {
+	position: absolute !important;
+	left: -9999px !important;
+}
+
+#social .social-input-row {
+	margin-bottom: 15px !important;
+	padding-left: 0px !important;
+}
+
+#social input.social-input, 
+#social textarea.social-input, 
+#social .social-select {
+	background: none !important;
+	display: inline-block;
+	text-decoration: none;
+	color: #555;
+	border: 1px solid #dedede !important;
+	-webkit-border-radius: 3px !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+	padding: 0 10px !important;
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+#social input.social-input,  
+#social .social-select {
+	width: 100% !important;
+	height: 46px !important;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;    
+	box-sizing: border-box;
+}
+
+#social textarea.social-input {
+	padding-top: 20px;
+	width: 61.8%;
+}
+
+#social .form-submit {
+	padding-left: 0px !important;
+	height: 46px !important;
+}
+
+#social input#submit {
+	width: 38.19%;
+	padding-left: 0px !important;
+	display: block;
+	background: none !important;
+	background-color: #dedede !important;
+	color: #555 !important;
+
+	font: 16px sans-serif !important;
+	color: #555 !important;
+
+	border: none !important;
+
+	-webkit-border-radius: 3px !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+
+	height: 46px !important;
+	position: relative !important;
+	text-align: center !important;
+
+	text-shadow: none !important;
+
+	/*Transition*/ 
+	-webkit-transition: All 0.5s ease; 
+	-moz-transition: All 0.5s ease; 
+	-o-transition: All 0.5s ease; 
+	-ms-transition: All 0.5s ease; 
+	transition: All 0.5s ease;
+}
+
+	#social input#submit:hover,
+	#social input#submit:active,
+	#social input#submit:focus {
+		background-color: #a7a7a7 !important;
+		color: #efefef !important;
+		border: none !important;
+	}
+
+#social .social-identity {
+	margin-top: 0px !important;
+	margin-bottom: 33px !important;
+}
+
+.logged-in #social .social-identity .social-input-row {
+	padding-left: 50px !important;
+}
+
+#social .social-nav {
+	background: none !important;
+}
+
+#social .social-nav li a {
+	text-decoration: none;
+}
+
+#social .social-nav .social-current-tab {
+	background: #DEDEDE !important;
+
+	-webkit-border-radius: 3px !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+}
+
+#social .social-nav .social-current-tab a {
+	background: none !important;
+	text-decoration: none !important;
+}
+
+#social .social-replied,
+#social .social-pingback {
+	display: none !important;
+}
+
+/* Social Media Buttons Sidebar
+-------------------------------------------------------------------------------*/
+.social-media ul {
+	text-align: center;
+}
+
+.social-media li {
+	display: inline-block;
+	padding-right: 3px;
+	height: 46px;
+	margin-top: 15px;
+
+}
+	.social-media li:hover {
+		margin-top: 0px;
+	}
+
+.social-media a {
+	width: 46px;
+	height: 46px;
+    display: inline-block;
+}
+
+.social-media li a:hover {
+		margin-top: 0px;
+}
+
+.social-media #facebook {
+	background: url('img/sprites.png') no-repeat -9px -9px;
+}
+
+.social-media #twitter {
+	background: url('img/sprites.png') no-repeat -64px -9px;
+}
+
+.social-media #google-plus {
+	background: url('img/sprites.png') no-repeat -121px -9px;
+}
+
+.social-media #linkedin {
+	background: url('img/sprites.png') no-repeat -177px -9px;
+}
+
+.social-media #pinterest {
+	background: url('img/sprites.png') no-repeat -233px -9px;
+}
+
+.social-media #rss {
+	background: url('img/sprites.png') no-repeat -290px -9px;
+}
+
+/* Contact Form 7
+-------------------------------------------------------------- */
+
+.wpcf7 p {
+	margin-bottom: 0;
+}
+
+.wpcf7 label {
+	position: absolute;
+	left: -9999px;
+}
+
+.wpcf7 br {
+	line-height: 100%;
+}
+
+.wpcf7 .ajax-loader {
+	display: none;
+}
+
+/* CF7 Buttons */
+.wpcf7-submit,
+#news #contact-button {
+	width: 100%;
+	display: block;
+	border: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	height: 46px;
+	position: relative;
+	text-align: center;
+	line-height: 46px;
+}
+
+.wpcf7-submit,
+#news #contact-button {
+	background-color: #dedede;
+	color: #555;
+
+	/*Transition*/ 
+	-webkit-transition: All 0.5s ease; 
+	-moz-transition: All 0.5s ease; 
+	-o-transition: All 0.5s ease; 
+	-ms-transition: All 0.5s ease; 
+	transition: All 0.5s ease;
+}
+
+	.wpcf7-submit:hover,
+	.wpcf7-submit:focus,
+	.wpcf7-submit:active,
+	#news #contact-button:hover,
+	#news #contact-button:focus,
+	#news #contact-button:active {
+		background-color: #a7a7a7;
+		color: #efefef !important;
+	}
+
+#news #contact-button {
+	width: auto;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+/* CF7 Text Fields */
+.wpcf7-text,
+.wpcf7-textarea,
+.wpcf7-response-output,
+.wpcf7-not-valid-tip {
+		width: 100% !important; 
+		display: inline-block;
+		text-decoration: none;
+		color: #555;
+		border: 1px solid #dedede;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		padding: 0 10px;
+		-webkit-box-sizing: border-box; 
+		-moz-box-sizing: border-box;    
+		box-sizing: border-box;         
+	}
+
+.wpcf7-text {
+	height: 46px;
+}
+
+	.ie7 .wpcf7-text { /* IE7 */
+		width: 286px !important; /* Needs to be adjusted depending on sidebar width */
+		height: auto;
+		padding: 0 !important;
+	}
+
+	.ie8 .wpcf7-text { /* IE8 */
+		height: auto; 
+	}
+
+.wpcf7-textarea {
+	height: 138px;
+}
+
+	.ie7 .wpcf7-textarea { /* IE7 */
+		width: 266px !important; /* Needs to be adjusted depending on sidebar width */
+	}
+
+#news .wpcf7-text,
+#news .wpcf7-textarea {
+	margin-top: 15px;
+}
+
+
+.wpcf7-not-valid-tip,
+.wpcf7-not-valid-tip-no-ajax {
+	margin-top: 5px;
+	padding: 0 5px !important;
+}
+
+.wpcf7-not-valid-tip,
+.wpcf7-not-valid-tip-no-ajax {
+	background: #FF9494 !important;
+	color: white !important;
+	border: none !important;
+	position: static !important;
+}
+
+	.ie7 .wpcf7-not-valid-tip { /* IE7 */
+		width: 266px !important; /* Needs to be adjusted depending on sidebar width */
+		padding: 0 !important;
+	}
+
+.wpcf7-response-output {
+	border: none !important;
+	margin: 15px 0 0 !important;
+	margin-top: 15px;
+}
+
+.wpcf7-mail-sent-ok {
+	background: #c5e6b1;
+	color: white;
+}
+
+.wpcf7-mail-sent-ng {
+	background: #FF9494;
+	color: white;
+}
+
+.wpcf7-spam-blocked {
+	background: #FEC993;
+	color: white;
+}
+
+.wpcf7-validation-errors {
+	background: #FF9494;
+	color: white;
+}
+
+#news .wpcf7-textarea {
+	margin-bottom: 10px;
+}
+
+#mc-sign-up-email {
+	margin-bottom: 15px !important;
+}
+
+/* MailChimp Sign-Up
+-------------------------------------------------------------- */
+
+#mc-sign-up .wpcf7-validation-errors {
+	display: none !important;
+}
+
+
+#news #mc-sign-up-button {
+	background-color: #f4802d;
+	color: #efefef;
+}
+
+	#news #mc-sign-up-button:hover,
+	#news #mc-sign-up-button:active, 
+	#news #mc-sign-up-button:focus {
+		background-color: #5C963A;
+	}
+
+/* Twitter
+-------------------------------------------------------------- */
+#news .tweet {
+	width:100%;
+	margin: 0;
+}
+
+	#news .tweet_list {
+		list-style: none !important;
+		padding-left: 0 !important;
+	}
+
+	#news .tweet_list li {
+		border-bottom: 1px solid #dedede;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+	}
+
+		#news .tweet_list li:last-child {
+			border-bottom: none;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+
+	#news .tweet_list li img {
+		max-width: 48px;
+	}
+
+		#news .tweet_list .tweet_avatar {
+			float: left;
+			margin-right: 10px;
+		}
+
+
+/* Print styles!
+-------------------------------------------------------------------------------*/
+@media print {
+
+}
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+	
+		
+}
+
+@media all and (orientation: portrait) {
+	
+}
+
+@media all and (orientation: landscape) {
+	
+}
+
+
+
+#news p, #news h3, #news .yarpp-thumbnail-title {
+	font-family: Arial;
+}
+
+#news h1 {
+	font-family: Arial;
+}
+
+#news .page-title, #news a, #news .entry-title, #breadcrumbs a {
+	color: #00b259;
+}
+
+.stMainServices, .stButton_gradient {
+	height: 100% !important;
+}
+
+.stHBubble {
+	height: 22px !important;
+}
+
+#news ol {
+	margin: 22px;
+}
+
+p#breadcrumbs {
+	padding-top: 18px;
+	font-size: 13px;
+	padding-left: 15px;
+	padding-bottom: 0;
+}
+#breadcrumbs a {
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #00b259;
+  font-weight: normal;
+  color: #00b259;
+  font-size: 13px;
+}
+
+#news .page-title {
+	padding-bottom: 0;
+	margin-bottom: 5px;
+}
+
+#news .entry-header a {
+	font-family: Arial;
+}
+
+#sidebar {
+/*	background: #f5f5f5; */
+	padding: 50px 0 0 0px;
+	width: 25%;
+	float: left;
+}
+
+#categories-2 a:link, #archives-2 a:link {
+	font-size: 15px !important;
+}
+
+
+/*
+#latest-news img, #news .post .article-image img {
+  height: 217px;
+  width: 351px;
+  object-fit: cover; 
+}
+*/
+
+/*
+#latest-news .feature-post img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover; 
+	margin-bottom: 5px;
+}
+*/
+
+#news .feature-post .entry-header h2 a {
+
+
+  font-size: 33px;
+  line-height: 41px;
+}
+
+
+
+#news .entry-header h2 a {
+
+  color: rgb(75,75,75);
+  font-weight: bold;
+}
+
+#latest-news .social-sharing {
+	display: inline-block;
+}
+
+#news .byline-div {
+	
+	font-weight: bold;
+	
+}
+
+#news {
+	font-family: Arial;
+}
+
+.feature-post a.read-more-box {
+	margin-left: 0 !important;
+}
+
+a.read-more-box {
+/*	
+  display: block;
+  border: 2px solid rgb(0, 164, 160);
+  width: 110px;
+  text-align: center;
+  color: rgb(0, 164, 160) !important;
+  padding: 5px !important;
+  font-weight: bold;
+  margin-top: 10px !important;
+*/
+  display: block;
+  width: 200px;
+  text-align: center;
+  padding: 5px !important;
+  background-color: #00b259;
+  color: white !important;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 7px 0px 7px 0px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-top: 10px !important;
+
+}
+a.read-more-box:hover {
+	background-color: rgb(51, 51, 51);
+}
+#news #sidebar select {
+background: transparent;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px;
+  width: 292px;
+  -webkit-appearance: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#news #sidebar select option {
+color: #4d5b62;
+
+}
+
+.select-wrapper {
+background: url("http://blog.gms.ca/wp-content/uploads/sites/93/2015/07/caret.png") no-repeat #00b259;
+background-position: 252px;
+  background-size: 23px 18px;
+  width: 292px;
+  margin-bottom: 15px;
+}
+
+.select-wrapper:hover {
+background: url("http://blog.gms.ca/wp-content/uploads/sites/93/2015/07/caret.png") no-repeat rgb(51, 51, 51);
+background-position: 252px;
+  background-size: 23px 18px;
+}
+
+#news .navigation a{
+	border: 3px solid #00b259;
+	padding: 5px;
+	background: #00b259;
+	color: white;
+	border-radius: 4px;
+}
+
+#news .navigation span {
+	border: 3px solid #00b259;
+	padding: 5px;
+	color: #00b259;	
+	border-radius: 4px;
+}
+
+/* Single  article */
+
+#news .figure img {
+	width: 100%;
+/*	object-fit: cover; */
+}
+
+#news .post .entry-title {
+
+  font-size: 33px;
+  line-height: 41px;
+  color: rgb(75,75,75);
+  font-weight: bold;
+}
+/*
+.bottom-article-links a:nth-child(1) {
+	border: 3px solid #00b259;
+	color: #00b259 !important;
+	font-weight: bold;
+  padding: 5px !important;
+  font-size: 20px;
+  border-radius: 4px;
+}
+*/
+
+
+.bottom-article-links a:nth-child(1) {
+	float: left !important;
+}
+
+.bottom-article-links a{
+	border: 1px solid transparent;
+	background: #00b259 !important;
+	color: white !important;
+  font-weight: bold;
+/*  padding: 7px 5px !important; */
+  padding: 5px !important;
+  font-size: 12px !important;	
+  float: right;
+ /* margin-top: -8px !important; */
+ border-radius: 4px;
+  font-size: 11pt;
+  text-align: center;
+  width: 200px;
+  line-height: 20px;
+}
+
+.bottom-article-links a:hover{
+	background: rgb(51, 51, 51) !important;
+}
+
+#news #sidebar .yarpp-related-widget h3 {
+	background: #00b259;
+	color: white;
+	width: 292px;
+	  font-weight: bold;
+  padding: 5px 20px;
+
+  border: none;
+  font-size: 16px;
+}
+
+#news #sidebar .widget_yarpp_widget {
+	padding: 0;
+}
+
+
+
+#news .post .entry-content .yarpp-related {
+	display: none;
+}
+
+
+
+#news #sidebar .yarpp-related-widget .yarpp-thumbnail:hover {
+	background: #008488;
+}
+
+
+#news #sidebar .yarpp-related-widget .yarpp-thumbnail .yarpp-thumbnail-title {
+	position: absolute;
+	color: white;
+	top: 15px;
+	width: 292px;
+	text-align: center;
+	padding: 5px;
+	margin: 0;
+	font-weight: bold;
+	font-size: 22px;
+
+}
+
+#sthoverbuttons-top, #sthoverbuttons-shade, #sthoverbuttons-bottom {
+	background: transparent !important;
+
+}
+
+#sthoverbuttons {
+	top: 38% !important;
+}
+
+.sthoverbuttons-label {
+	display: none;
+}
+
+/* Archive */
+
+.archive .social-sharing {
+	display: inline-block;
+}
+
+.archive .entry-header img {
+  height: 217px;
+  width: 351px;
+/*  object-fit: cover; */
+}
+
+
+
+.archive .article-image img{
+	height: 217px;
+  width: 351px;
+/*  object-fit: cover; */
+}
+
+#sidebar .Container-H3 {
+	margin-left: 7px;
+}
+
+#sidebar .Container-H3 a {
+	color: white !important;
+	border-color: white !important;
+}
+
+#news #sidebar .widget {
+	padding: 0;
+}
+
+#news .non-feature-post {
+	display: table;
+}
+
+#news .non-feature-post .article-image {
+	display: table-cell;
+	min-width: 366px;
+	width: 366px;
+}
+
+#news .non-feature-post .article-right {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.blog .body_bg #dnn_wrapper {
+	overflow: visible !important;
+}
+
+@media screen and (max-width: 400px) {
+	.non-feature-post .article-image .brafton-image-wrapper {
+
+	    width: 100% !important;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	
+
+	#news .non-feature-post {
+		display: block;
+	}
+
+	#news .non-feature-post .article-image {
+		display: block;
+		min-width: auto;
+		width: auto;
+	}
+
+	#news .non-feature-post .article-right {
+		display: block;
+		vertical-align: auto;
+	}
+
+	#primary,
+	.single #news article,
+	.page #news article {
+		width: 100%;
+
+		margin-right: 5px;
+
+	}
+
+		
+}
+
+#news .select-wrapper select::-ms-expand {
+	display: none;
+}
+
+#news .select-wrapper select {
+	-moz-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: "";
+}
+
+.brafton-image-wrapper {
+	border-top: 4px solid #008488;
+}
+
+
+.feature-post .entry-header .brafton-image-wrapper {
+	position: relative;
+	overflow: hidden;
+	height: 300px;
+}
+
+.feature-post .entry-header .brafton-image-wrapper  img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: auto;
+	width: 100%;
+	transform: translate(-50%,-50%);
+  	-webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.non-feature-post .article-image .brafton-image-wrapper {
+	position: relative;
+	overflow: hidden;
+	height: 217px;
+	width: 351px;
+}
+
+.non-feature-post .article-image .brafton-image-wrapper  img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: auto;
+	width: 100%;
+	transform: translate(-50%,-50%);
+  	-webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.single #news .post .figure {
+	position: relative;
+	overflow: hidden;
+	height: 300px;
+ 	border-top: 4px solid #008488;
+  	border-radius: 0;
+}
+
+.single #news .post .figure  img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: auto;
+	width: 100%;
+	transform: translate(-50%,-50%);
+  	-webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    border-radius: 0;
+}
+
+.single .single-image-wrapper {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+#news #sidebar .yarpp-related-widget .yarpp-thumbnail {
+	width: 292px;
+	height: 120px;
+	position: relative;
+	background: rgb(51,51,51);
+	margin-top: 15px;
+	overflow: hidden;
+}
+
+#news #sidebar .yarpp-related-widget .yarpp-thumbnail img {
+	width: 100%;
+	height: auto;
+	position: absolute;
+/*	object-fit: cover; */
+	margin-left: 0;
+	opacity: 0.3;
+	margin: 0;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+  	-webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);	
+}
+
+#news #sidebar .yarpp-thumbnails-horizontal .yarpp-thumbnail-title {
+	max-height: 4.2em;
+}
+
+#news .navigation {
+	text-transform: uppercase;
+}
